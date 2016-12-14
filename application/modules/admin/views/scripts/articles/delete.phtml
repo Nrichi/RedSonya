@@ -1,0 +1,9 @@
+<h1>Удаление статьи из раздела "Это интересно"</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите полностью удалить статью
+        		<span class="bold">"<?php echo $this->escape($this->article['title']); ?>"</span> из базы данных?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->article['article_id'])), 'admin-articles-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->article['article_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array(), 'admin-articles-index'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

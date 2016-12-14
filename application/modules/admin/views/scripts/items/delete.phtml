@@ -1,0 +1,9 @@
+<h1>Удаление товара из каталога</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите удалить товар 
+        		<span class="bold">"<?php echo $this->escape($this->item['item_name']); ?>"</span> из базы данных?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->item['item_id'])), 'admin-items-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->item['item_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array(), 'admin-items-index'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

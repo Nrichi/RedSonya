@@ -1,0 +1,43 @@
+<h1>Статьи раздела "Это интересно"</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->articles)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Фото</td>
+		                	<td>Название статьи</td>
+		                    <td>Краткое описание</td>
+		                    <td>Добавлено</td>
+		                    <td class="actions_icons">Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->articles as $art): ?>
+							<tr>
+			                    <td><img class="master" src="/allarticles/<?php echo $this->escape($art['article_id']); ?>/<?php echo $this->escape($art['img']); ?>"></td>
+			                    <td><?php echo $this->escape($art['title']); ?></td>
+			                    <td class="left_txt"><?php echo nl2br(mb_strcut($this->escape($art['desc']), 0, 700)); ?>...</td>
+			                    <td><?php echo date('d.m.Y', $this->escape($art['created'])); ?></td>
+
+			                    <td>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($art['article_id'])), 'admin-articles-comments', true); ?>">
+			                    		<img src="/images/comments.png" title="Перейти к комментариям"></a>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($art['article_id'])), 'admin-articles-display', true); ?>">
+			                    		<img src="/images/eye.png" title='Просмотр'></a>
+			                        <a href="<?php echo $this->url(array('id' => $this->escape($art['article_id'])), 'admin-articles-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+        	
+		<?php else: ?>
+			<p>Пока нет ни одной статьи</p>
+		<?php endif; ?>
+		<a class="green btn" href="<?php echo $this->url(array(), 'admin-articles-create'); ?>">ДОБАВИТЬ СТАТЬЮ</a>
+	</section>
+
+

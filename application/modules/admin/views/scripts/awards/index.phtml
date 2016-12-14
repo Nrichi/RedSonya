@@ -1,0 +1,32 @@
+<h1>Награды, выставки и номинации, в которых может участвовть товар</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->awards)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Фото</td>
+		                    <td>Название</td>
+		                    <td class="action_icons">Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->awards as $awd): ?>
+							<tr>
+			                    <td><img class="master" src="/itemawards/<?php echo $this->escape($awd['img']); ?>"></td>
+			                    <td><?php echo $this->escape($awd['title']); ?></td>
+			                    <td>
+			                        <a href="<?php echo $this->url(array('id' => $this->escape($awd['award_id'])), 'admin-awards-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+        	
+		<?php else: ?>
+			<p>В данной категории пока нет ни одной записи</p>
+		<?php endif; ?>
+		<a class="green btn" href="<?php echo $this->url(array(), 'admin-awards-create'); ?>">ДОБАВИТЬ НАГРАДУ</a>
+	</section>

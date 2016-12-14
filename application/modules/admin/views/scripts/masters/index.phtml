@@ -1,0 +1,35 @@
+<h1>Мастера</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->masters)): ?>
+			<table id="prod_tbl">
+	        	<thead>
+	            	<tr>
+	                	<td>Фото</td>
+	                    <td>ФИО мастера</td>
+	                    <td>Резюме</td>
+	                    <td class="action_icons">Действия</td>
+	                </tr>
+	            </thead>
+	            <tbody>
+					<?php foreach ($this->masters as $master): ?>
+						<tr>
+		                    <td><img class="master" src="/foto/<?php echo $this->escape($master['img']); ?>"></td>
+		                    <td><?php echo $this->escape($master['name']); ?></td>
+		                    <td class="left_txt"><?php echo nl2br($this->escape($master['resume'])); ?></td>
+		                    <td>
+		                    	<a href="<?php echo $this->url(array('id' => $this->escape($master['master_id'])), 'admin-masters-update', true); ?>">
+		                    		<img src="/images/edit1.png" title="Редактировать"></a>
+		                        <a href="<?php echo $this->url(array('id' => $this->escape($master['master_id'])), 'admin-masters-delete', true); ?>">
+		                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+		                    </td>
+		                </tr>
+					<?php endforeach; ?>
+				</tbody>
+	        </table>
+        
+		<?php else: ?>
+			<p>Пока нет ни одного мастера</p>
+		<?php endif; ?>
+		<a class="green btn" href="<?php echo $this->url(array(), 'admin-masters-create'); ?>">ДОБАВИТЬ МАСТЕРА</a>
+	</section>

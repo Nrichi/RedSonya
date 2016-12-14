@@ -1,0 +1,50 @@
+<header>
+	<h2>ГАЛЕРЕЯ РАБОТ</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<?php if ($_SERVER['REQUEST_URI'] == $this->url(array('category' => 'teddy'), 'gallery')): ?>
+					  <li>Мишки Тедди и их друзья</li>
+				<?php else: ?>	
+					  <li><a href="<?php echo $this->url(array('category' => 'teddy'), 'gallery'); ?>">Мишки Тедди и их друзья</a></li>
+				<?php endif; ?>
+				
+				<?php if ($_SERVER['REQUEST_URI'] == $this->url(array('category' => 'wool'), 'gallery')): ?>
+					  <li>Игрушки и украшения из шерсти</li>
+				<?php else: ?>	
+					  <li><a href="<?php echo $this->url(array('category' => 'wool'), 'gallery'); ?>">Игрушки и украшения из шерсти</a></li>
+				<?php endif; ?>
+				
+				<?php if ($_SERVER['REQUEST_URI'] == $this->url(array('category' => 'decor'), 'gallery')): ?>
+					  <li>Предметы интерьера и декор</li>
+				<?php else: ?>	
+					  <li><a href="<?php echo $this->url(array('category' => 'decor'), 'gallery'); ?>">Предметы интерьера и декор</a></li>
+				<?php endif; ?>
+ 				
+ 				<?php if ($_SERVER['REQUEST_URI'] == $this->url(array('category' => 'other'), 'gallery')): ?>
+					  <li>Приятные мелочи</li>
+				<?php else: ?>	
+					  <li><a href="<?php echo $this->url(array('category' => 'other'), 'gallery'); ?>">Приятные мелочи</a></li>
+				<?php endif; ?>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+<?php if (count($this->items)): ?>
+	<section id="galerylist">
+		<?php foreach ($this->items as $item): ?>
+			<a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'gallery-display', true); ?>">
+				<article>
+					<h3><?php echo $this->escape($item['item_name']); ?></h3>
+					<img class="imgframe" src="/foto/<?php echo $this->escape($item['img']); ?>">
+				</article>
+			</a>
+		<?php endforeach; ?>
+	</section>
+	
+	<aside class="pagelist">Страницы <?php echo $this->pages; ?></aside>
+	
+<?php else: ?>
+	<p>В разделе нет ни одной записи</p>
+<?php endif; ?>

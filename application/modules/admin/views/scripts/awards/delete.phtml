@@ -1,0 +1,10 @@
+<h1>Удаление награды</h1>
+    <section id="content_wrapper">
+        <img class="pictures_of_item" src="/itemawards/<?php echo $this->escape($this->award['img']); ?>">
+        <p>Вы уверены, что хотите награду 
+        		<span class="bold">"<?php echo $this->escape($this->award['title']); ?>"</span> из базы данных?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->award['award_id'])), 'admin-awards-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->award['award_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array(), 'admin-awards-index'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

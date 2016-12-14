@@ -1,0 +1,64 @@
+<h1>Каталог товаров</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->items)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Фото<br>(награды)</td>
+		                	<td>Название</td>
+		                	<td>Категория</td>
+		                    <td>Заголовок</td>
+		                    <td>Описание</td>
+		                    <td>Размеры см</td>
+		                    <td>Материалы</td>
+		                    <td>Цена</td>
+		                    <td>В наличии</td>
+		                    <td>Добавлен</td>
+		                    <td>Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->items as $item): ?>
+							<tr>
+			                    <td><img class="master" src="/foto/<?php echo $this->escape($item['img']); ?>"></td>
+			                    <td><?php echo $this->escape($item['item_name']); ?></td>
+			                    <td><?php switch($item['category_id']) {
+											case '1': $cat = 'Тедди и друзья'; break;
+											case '2': $cat = 'игрушки из шерсти'; break;
+											case '3': $cat = 'предметы декора'; break;
+											case '4': $cat = 'приятные мелочи'; break;
+											case '5': $cat = 'материалы аксессуары'; break;
+										  }
+			                    		  echo $cat; ?></td>
+			                    <td class="left_txt"><?php echo $this->escape($item['title']); ?></td>
+			                    <td class="left_txt"><?php echo nl2br(mb_strcut($this->escape($item['description']), 0, 200)); ?>... </td>
+			                    <td><?php echo $this->escape($item['width'])
+			                    		  .'x'.$this->escape($item['height'])
+			                    		  .'x'.$this->escape($item['depth']); ?></td>
+
+			                    <td class="left_txt"><?php echo $this->escape($item['materials']); ?></td>
+			                    <td><?php echo $this->escape($item['price']); ?></td>
+			                    <td><?php echo $this->escape($item['sold'])? '&mdash;' : '<img src="/images/ok16.png" title="Фотографии товара">'; ?></td>
+			                    <td><?php echo date('d.m.Y', $this->escape($item['created'])); ?></td>
+			                    <td>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'admin-items-images', true); ?>">
+			                    		<img src="/images/picture.png" title="Фотографии товара"></a>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'admin-items-update', true); ?>">
+			                    		<img src="/images/edit1.png" title="Редактировать"></a>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'admin-items-comments', true); ?>">
+			                    		<img src="/images/comments.png" title="Перейти к комментариям"></a>
+			                        <a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'admin-items-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+        	
+		<?php else: ?>
+			<p>Пока нет ни одного товара в каталоге</p>
+		<?php endif; ?>
+		<a class="green btn" href="<?php echo $this->url(array(), 'admin-items-create'); ?>">ДОБАВИТЬ ТОВАР</a>
+	</section>

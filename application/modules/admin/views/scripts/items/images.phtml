@@ -1,0 +1,28 @@
+<h1>Фотографии к товару "<?php echo $this->escape($this->item['item_name']); ?>", отображаемые в слайдере</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php $num = count($this->pics);
+	    	if ($num): ?>
+			
+			<table id="prod_tbl">
+				<tr>
+				<?php foreach ($this->pics as $img): ?>
+					<td>
+						<img class="pictures_of_item" src="/foto/<?php echo $this->escape($img['img']); ?>"><br>
+						<a href="<?php echo $this->url(array('id' => $this->escape($img['img_id'])), 'admin-items-images-delete', true); ?>">
+						<img src="/images/cancel(3).png" title="Удалить"></a>
+					</td>
+
+				<?php endforeach; ?>
+				</tr>
+			</table>
+			<?php if ($num < 6):?>
+				<a class="green btn" href="<?php echo $this->url(array('id' => $this->escape($this->item['item_id'])), 'admin-items-images-addfoto', true); ?>">ДОБАВИТЬ ФОТО</a>
+			<?php endif; ?>
+
+		<?php else: ?>
+			<p>Пока нет ни одной фотографии в слайдере к данному товару</p>
+			<a class="green btn" href="<?php echo $this->url(array('id' => $this->escape($this->item['item_id'])), 'admin-items-images-addfoto', true); ?>">ДОБАВИТЬ ФОТО</a>
+		<?php endif; ?>
+		
+	</section>

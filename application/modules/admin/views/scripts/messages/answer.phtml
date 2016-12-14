@@ -1,0 +1,6 @@
+<h1>Ответ на сообщение с контактной формы</h1>
+    <section id="content_wrapper">
+    	<p><span class="bold">Сообщение от пользователя <?php echo $this->escape($this->user_msg['name']); ?>:</span><br><br>
+    		<?php echo nl2br($this->escape($this->user_msg['text'])); ?></p>
+        <?php echo $this->form; ?>
+    </section>

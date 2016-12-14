@@ -1,0 +1,33 @@
+<h1>Комментарии к статье "<?php echo $this->escape($this->article['title']); ?>"</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->comments)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Имя</td>
+		                    <td>E-mail</td>
+		                    <td>Текст комментария</td>
+		                    <td>Добавлен</td>
+		                    <td>Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->comments as $comt): ?>
+							<tr>
+			                	<td><?php echo $this->escape($comt['name']); ?></td>
+			                    <td><?php echo $this->escape($comt['email']); ?></td>
+			                    <td class="left_txt"><?php echo $this->escape($comt['comment']); ?></td>
+			                    <td><?php echo date('d.m.Y', $this->escape($comt['created'])); ?></td>
+			                    <td><a href="<?php echo $this->url(array('id' => $this->escape($comt['comment_id'])), 'admin-articles-comments-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a></td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+        	
+		<?php else: ?>
+			<p>Пока нет ни одного комментария к даннй статье</p>
+		<?php endif; ?>
+	</section>

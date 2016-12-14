@@ -1,0 +1,29 @@
+			<header>
+            	<h2>ПОЗНАКОМИМСЯ? =)</h2>
+            </header>
+            
+            <section id="masters">
+	            <?php if (count($this->masters)): ?>
+	            	<?php foreach ($this->masters as $master): ?>
+						<article>
+			                	<img class="imgframe about" src="/foto/<?php echo $this->escape($master['img']); ?>" width="160" />
+			                    <header><h3><?php echo $this->escape($master['name']); ?></h3></header>
+			                    <p><?php echo nl2br($this->escape($master['resume'])); ?></p>
+			                </article>
+	                <?php endforeach; ?>
+	            <?php else: ?>
+					<p>Пока нет ни одной записи о мастерах</p>
+				<?php endif; ?>
+            </section>
+            
+            <section id="legend">
+            <?php if (count($this->posts)): ?>
+            	<?php foreach ($this->posts as $post): ?>
+					<article>
+		                    <header><h3><?php echo $this->escape($post['title']); ?></h3></header>
+		                    <img class="imgframe about" src="/foto/<?php echo $this->escape($post['img']); ?>" />
+		                    <p><?php echo nl2br($this->escape($post['post'])); ?></p>
+		            </article> 
+		        <?php endforeach; ?> 
+			<?php endif; ?>              
+            </section>

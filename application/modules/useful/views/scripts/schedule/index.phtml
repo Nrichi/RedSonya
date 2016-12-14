@@ -1,0 +1,38 @@
+<header>
+	<h2>ХОТИТЕ НАУЧИТЬСЯ?</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'articles'); ?>">Это интересно</a></li>
+				<li><a href="<?php echo $this->url(array(), 'masterclass'); ?>">Виртуальные мастер-классы</a></li>
+                <li>Расписание мастер-классов</li>
+                <li><a href="<?php echo $this->url(array(), 'links'); ?>">Полезные ссылки</a></li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+<section id="schedule">
+	<!-- <img class="sculpture" src="/images/sculpture.png" /> -->
+	
+	<?php if (count($this->mclasses)): ?>
+		<table id="masterclass">
+			<?php foreach ($this->mclasses as $mc): ?>
+				<tr class="btmline">
+					<td valign="top"><?php echo date('d.m.Y', $this->escape($mc['date'])); ?></td>
+					<td><h3><?php echo $this->escape($mc['title']); ?></h3>
+						<p><?php echo nl2br($this->escape($mc['description'])); ?></p>
+						<aside class="white">
+							<h4>МЕСТО ПРОВЕДЕНИЯ МК</h4>
+							<?php echo $this->escape($mc['place']); ?>
+						</aside>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+
+	<?php else: ?>
+		<p>В расписании пока нет ни одной записи</p>
+	<?php endif; ?>
+</section>
+<aside class="pagelist">Страницы <?php echo $this->pages; ?></aside>

@@ -1,0 +1,10 @@
+<h1>Удаление фотографии с описанием из поста в Блоге</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите удалить фото и описание к ней из поста?</p><br>
+        		
+        <img class="master" src="/blogfotos/<?php echo $this->escape($this->block['post_id']); ?>/<?php echo $this->escape($this->block['img']); ?>">
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->block['img_id'])), 'admin-blog-delblock'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->block['img_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array('id' => $this->escape($this->block['post_id'])), 'admin-blog-display', true); ?>">ОТМЕНА</a>
+        </form>
+    </section>

@@ -1,0 +1,33 @@
+<h1>Список полезных ссылок</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->links)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Адресс www</td>
+		                    <td>Описание</td>
+		                    <td class="action_icons">Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->links as $link): ?>
+							<tr>
+			                    <td class="left_txt"><?php echo $this->escape($link['link']); ?></td>
+			                    <td class="left_txt"><?php echo $this->escape($link['title']); ?></td>
+			                    <td>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($link['link_id'])), 'admin-links-update', true); ?>">
+			                    		<img src="/images/edit1.png" title="Редактировать"></a>
+			                        <a href="<?php echo $this->url(array('id' => $this->escape($link['link_id'])), 'admin-links-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+		<?php else: ?>
+			<p>Пока нет ни одной записи.</p>
+		<?php endif; ?>
+		<a class="green btn" href="<?php echo $this->url(array(), 'admin-links-create'); ?>">ДОБАВИТЬ ССЫЛКУ</a>
+	</section>

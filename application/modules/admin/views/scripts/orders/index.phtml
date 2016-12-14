@@ -1,0 +1,55 @@
+<h1>Заказы</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->orders)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Статус</td>
+		                	<td>Фото товара</td>
+		                	<td>Название товара</td>
+		                    <td>Имя заказчика</td>
+		                    <td>Адрес</td>
+		                    <td>Телефон</td>
+		                    <td>E-mail</td>
+		                    <td>Примечание</td>
+		                    <td>Принято</td>
+		                    
+		                    <td class="actions_icons4">Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->orders as $order): ?>
+							<tr>
+			                    <td><?php echo $this->escape($order['status'])? '<img src="/images/ok16.png" title="Выполнен">' : '&mdash;'; ?></td>
+			                    <td><img class="master" src="/foto/<?php echo $this->escape($order['img']); ?>"></td>
+			                    <td><?php echo $this->escape($order['item']); ?></td>
+			                    <td><?php echo $this->escape($order['familia']).' '.
+			                    			   $this->escape($order['name']).' '.
+			                    			   $this->escape($order['otchestvo']); ?></td>
+			                    <td><?php echo $this->escape($order['address']); ?></td>
+			                    <td><?php echo $this->escape($order['tel']); ?></td>
+			                    <td><?php echo $this->escape($order['email']); ?></td>
+			                    <td><?php echo $order['note']? nl2br($this->escape($order['note'])) : '&mdash;'; ?></td>
+			                    <td><?php echo date('d.m.Y', $this->escape($order['created'])); ?></td>
+
+			                    <td>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($order['order_id'])), 'admin-orders-complete', true); ?>">
+			                    		<img src="/images/accept.png" title='Отметить как "выполнен"'></a>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($order['order_id'])), 'admin-orders-incomplete', true); ?>">
+			                    		<img src="/images/none.png" title='Отметить как "невыполнен"'></a>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($order['order_id'])), 'admin-orders-answer', true); ?>">
+			                    		<img src="/images/replay.png" title="Ответить на E-mail"></a>
+			                        <a href="<?php echo $this->url(array('id' => $this->escape($order['order_id'])), 'admin-orders-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+        	
+		<?php else: ?>
+			<p>Заказов нет</p>
+		<?php endif; ?>
+	</section>

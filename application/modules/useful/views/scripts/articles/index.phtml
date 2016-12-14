@@ -1,0 +1,35 @@
+<header>
+	<h2>ХОТИТЕ НАУЧИТЬСЯ?</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li>Это интересно</li>
+				<li><a href="<?php echo $this->url(array(), 'masterclass'); ?>">Виртуальные мастер-классы</a></li>
+                <li><a href="<?php echo $this->url(array(), 'schedule'); ?>">Расписание мастер-классов</a></li>
+                <li><a href="<?php echo $this->url(array(), 'links'); ?>">Полезные ссылки</a></li>
+			</ul>
+		</nav>
+	</section>
+</header>
+            
+            
+<?php if (count($this->allarticles)): ?>
+	<?php foreach ($this->allarticles as $art): ?>
+		<article class="btmline intarticle">
+        	
+        	<header><a href="<?php echo $this->url(array('id' => $this->escape($art['article_id'])), 'article', true); ?>">
+        		<img class="imgframe" src="/allarticles/<?php echo $this->escape($art['article_id']); ?>/<?php echo $this->escape($art['img']); ?>" /></a>
+        	</header>
+            
+            <aside class="postdate"><?php echo date('d.m.Y', $this->escape($art['created'])); ?></aside>
+            <a href="<?php echo $this->url(array('id' => $this->escape($art['article_id'])), 'article', true); ?>">
+            	<h3><?php echo $this->escape($art['title']); ?></h3></a>
+            <p><?php echo nl2br(mb_strcut($this->escape($art['desc']), 0, 700)); ?>... </p>
+            
+		</article>
+	<?php endforeach; ?>
+	<aside class="pagelist">Страницы <?php echo $this->pages; ?></aside>
+	
+<?php else: ?>
+	<p>Пока нет ни одной статьи</p>
+<?php endif; ?>

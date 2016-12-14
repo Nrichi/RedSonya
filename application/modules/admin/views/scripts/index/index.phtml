@@ -1,0 +1,6 @@
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+<section id="login_form_wrapper">
+    <p>Вход в панель администратора</p>
+   	<?php echo $this->form; ?>
+   	<a class="forgot_pswd" href="<?php echo $this->url(array(), 'forgotpass'); ?>">Не помню пароль</a>
+</section>

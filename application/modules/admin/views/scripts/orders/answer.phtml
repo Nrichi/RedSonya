@@ -1,0 +1,7 @@
+<h1>Сообщение пользователю, сделавшему заказ</h1>
+    <section id="content_wrapper">
+    	<p>Сообщение для: <span class="bold"><?php echo $this->escape($this->order['familia']).' '.
+			                    			   			$this->escape($this->order['name']).' '.
+			                    			   			$this->escape($this->order['otchestvo']); ?></span><br><br></p>
+        <?php echo $this->form; ?>
+    </section>

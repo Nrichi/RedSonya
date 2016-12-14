@@ -1,0 +1,30 @@
+<header>
+	<h2>ОБО ВСЕМ</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'blog'); ?>">Блог</a></li>
+                <li>Ответы на вопросы</li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+            <sectoin id="faq">
+            	<?php if (count($this->questions)): ?>
+                <ul id="my_quest">
+                
+                	<?php foreach ($this->questions as $ques): ?>
+                		<li><a href="#"><h3><?php echo $this->escape($ques['ques_text']); ?></h3></a>
+                    	<article>
+	                    	<p><?php echo nl2br($this->escape($ques['answer'])); ?></p>
+                    	 </article>
+                    </li>
+                	<?php endforeach; ?>
+                	</ul>
+                <?php else: ?>
+					<p>Вопросы отсутствуют</p>
+				<?php endif; ?>
+                
+                <img class="imgframe" src="foto/FAQ.jpg" />
+            </section>

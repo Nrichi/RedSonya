@@ -1,0 +1,33 @@
+<header>
+	<h2>ОБО ВСЕМ</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li>Блог</li>
+                <li><a href="<?php echo $this->url(array(), 'questions'); ?>">Ответы на вопросы</a></li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+
+<?php if (count($this->posts)): ?>
+	<?php foreach ($this->posts as $post): ?>
+		<article class="btmline intarticle">
+        	
+        	<header><a href="<?php echo $this->url(array('id' => $this->escape($post['post_id'])), 'blog-display', true); ?>">
+        		<img class="imgframe" src="/blogfotos/<?php echo $this->escape($post['post_id']); ?>/<?php echo $this->escape($post['img']); ?>" /></a>
+        	</header>
+            
+            <aside class="postdate"><?php echo date('d.m.Y', $this->escape($post['created'])); ?></aside>
+            <a href="<?php echo $this->url(array('id' => $this->escape($post['post_id'])), 'blog-display', true); ?>">
+            	<h3><?php echo $this->escape($post['title']); ?></h3></a>
+            <p><?php echo nl2br(mb_strcut($this->escape($post['desc']), 0, 700)); ?>... </p>
+            
+		</article>
+	<?php endforeach; ?>
+	<aside class="pagelist">Страницы <?php echo $this->pages; ?></aside>
+	
+<?php else: ?>
+	<p>Пока нет ни одной статьи</p>
+<?php endif; ?>

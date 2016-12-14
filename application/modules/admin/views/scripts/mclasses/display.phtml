@@ -1,0 +1,39 @@
+<h1>Обзор мастер-класса</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+    	<p>Мастер-класс: <span class="bold"><?php echo $this->escape($this->mclass['title']); ?></span></p><br>
+	    <?php if (count($this->blocks)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Фото</td>
+		                    <td>Описание</td>
+		                    <td>Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->blocks as $block): ?>
+							<tr>
+			                	<td><img class="master" src="/mclasses/<?php echo $this->escape($block['mc_id']); ?>/<?php echo $this->escape($block['img']); ?>"></td>
+			                	<td class="left_txt"><?php echo nl2br($this->escape($block['description'])); ?></td>
+			                    <td>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($block['img_id'])), 'admin-mclasses-editblock', true); ?>">
+			                    		<img src="/images/edit1.png" title="Редактировать блок"></a>
+			                    	<?php if (count($this->blocks) > 1): ?>
+			                    		<a href="<?php echo $this->url(array('id' => $this->escape($block['img_id'])), 'admin-mclasses-delblock', true); ?>">
+			                        		<img src="/images/cancel(3).png" title="Удалить блок"></a>
+			                        <?php endif; ?>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+        	
+		<?php else: ?>
+			<p>Пока нет ни одной фотографии с описанием в данном мастер-классе</p>
+		<?php endif; ?>
+	</section>
+	<section class="section_wrapper">
+		<p>Добавить блок с фотографией</p>
+		<?php echo $this->form; ?>
+	</section>

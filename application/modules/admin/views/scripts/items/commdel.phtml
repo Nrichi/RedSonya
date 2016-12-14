@@ -1,0 +1,9 @@
+<h1>Удаление комментария к товару</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите удалить комментарий от пользователя 
+        		<span class="bold">"<?php echo $this->escape($this->comment['name']); ?>"</span> из базы данных?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->comment['comment_id'])), 'admin-items-comments-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->comment['comment_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array('id' => $this->escape($this->comment['item_id'])), 'admin-items-comments'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

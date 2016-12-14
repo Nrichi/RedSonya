@@ -1,0 +1,5 @@
+<h1>Редактирование блока с фотографией в местар-классе</h1>
+    <section id="content_wrapper">
+        <img src="/mclasses/<?php echo $this->escape($this->block['mc_id']); ?>/<?php echo $this->escape($this->block['img']); ?>" width="550">
+        <?php echo $this->form; ?>
+    </section>

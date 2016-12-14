@@ -1,0 +1,29 @@
+<header>
+	<h2>КУПИТЬ</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'shop-items'); ?>">Готовые работы</a></li>
+				<li><a href="<?php echo $this->url(array(), 'shop-materials'); ?>">Материалы и аксессуары</a></li>
+				<li>Оформление заявки</li>
+			</ul>
+		</nav>
+	</section>
+</header>
+            
+<section id="items">
+	<article>
+		<header><h3><?php echo $this->escape($this->item['item_name']); ?></h3></header>
+		<img class="card_photo" src="/foto/<?php echo $this->escape($this->item['img']); ?>" />
+		<table>
+			<tr><td>Размер изделия:</td><td><?php echo $this->escape($this->item['width']); ?>х<?php echo $this->escape($this->item['height']); ?>х<?php echo $this->escape($this->item['depth']); ?> см</td></tr>
+            <tr><td>Вес с упаковкой:</td><td><?php echo $this->escape($this->item['weight']); ?> кг</td></tr>
+            <tr><td>Цена:</td><td class="price"><?php echo $this->escape($this->item['price']); ?> руб.</td></tr>
+		</table>
+		<h4>Чтобы сделать заказ, заполните форму справа</h4>
+	</article>
+	
+	<section id="order_form">		
+		<?php echo $this->form; ?>
+	</section>
+</section>

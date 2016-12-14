@@ -1,0 +1,30 @@
+	<h1>Категории товаров</h1>
+	<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <?php if(!$this->categories):?>
+    	<div id="user_msg" class="error">Ошибка. Неудалось извлечь категории из базы данных.</div>
+    <?php endif;?>
+    <section id="content_wrapper">
+        <table id="prod_tbl">
+        	<thead>
+            	<tr>
+                    <td>Фото</td>
+                    <td>Название категории</td>
+                    <td>Описание</td>
+                    <td>Редактирование</td>
+                </tr>
+            </thead>
+            <tbody>
+            	<?php foreach ($this->categories as $category): ?>
+            	<tr>
+                    <td><img class="item_pic" src="/foto/<?php echo $this->escape($category['img']); ?>"></td>
+                    <td><?php echo $this->escape($category['title']); ?></td>
+                    <td class="description"><?php echo nl2br($this->escape($category['description'])); ?></td>
+                    <td>
+                    	<a href="<?php echo $this->url(array('id' => $this->escape($category['category_id'])), 'admin-mainpage-update', true); ?>">
+                    		<img src="/images/edit1.png" title="Редактировать описание"></a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </section>

@@ -1,0 +1,83 @@
+<header>
+	<h2>КУПИТЬ</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'shop-items'); ?>">Готовые работы</a></li>
+				<li><a href="<?php echo $this->url(array(), 'shop-materials'); ?>">Материалы и аксессуары</a></li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+<!--------------------------SLIDER------------------------------->
+<?php if (count($this->images)): ?>
+	<section id="detailslider">
+		<img class="corner tl" src="/images/tl_corner.png" />
+		<img class="corner tr" src="/images/tr_corner.png" />
+		<img class="corner bl" src="/images/bl_corner.png" />
+		<img class="corner br" src="/images/br_corner.png" />
+		<div class="panel">
+			<ul id="images">
+				<?php foreach ($this->images as $img): ?>
+					<li><a href="/foto/<?php echo $this->escape($img['img']); ?>">
+							<img src="/foto/<?php echo $this->escape($img['img']); ?>" />
+						</a>
+					</li>
+				<?php endforeach; ?>    
+			</ul>
+			<!-- <div id="controls"></div> -->
+			<!-- <div class="clear"></div> -->
+		</div>
+                
+		<div id="exposure"></div>			
+		<div class="clear"></div>
+		<!--<div id="slideshow"></div>-->		
+	</section>
+<?php else: ?>
+	<img class="imgframe detailbaseimg" src="/foto/<?php echo $this->escape($this->item['img']); ?>" />
+<?php endif; ?>
+<!--------------------------/SLIDER------------------------------->
+         
+            
+<table id="detailinfo">
+	<tr class="btmline">
+		<td valign="top">
+			<article>
+				<header><h3><?php echo $this->escape($this->item['title']); ?></h3></header>
+						<p><?php echo nl2br($this->escape($this->item['description'])); ?></p>
+			</article>
+		</td>
+		<td class="white" valign="top">
+			<table>
+				<tr><td>Добавлено:</td><td><?php echo date('d.m.Y', $this->escape($this->item['created'])); ?></td></tr>
+				<tr><td>Размер изделия:</td><td><?php echo $this->item['width'] ? $this->escape($this->item['width']) : '-'; ?>&nbsp;x
+	                        					<?php echo $this->item['height'] ? $this->escape($this->item['height']) : '-'; ?>&nbsp;x
+	                        					<?php echo $this->item['depth'] ? $this->escape($this->item['depth']) : '-'; ?>&nbsp;см</td></tr>
+				<tr><td>Вес с упаковкой:</td><td><?php echo $this->item['weight'] ? $this->escape($this->item['weight']) : '-'; ?>&nbsp;кг</td></tr>
+			</table>
+			<h4>МАТЕРИАЛЫ</h4>
+			<ul>
+				<?php $materials = explode(',', $this->escape($this->item['materials'])); ?>
+				<?php foreach ($materials as $mtl): ?>
+					<li><?php echo $mtl;?></li>
+					<?php endforeach; ?>
+			</ul>
+		</td>
+	 </tr>
+	<tr><td>
+			<?php if (count($this->awards)): ?>
+				<?php foreach ($this->awards as $awd): ?>
+					<img class="master" src="/itemawards/<?php echo $this->escape($awd['img']); ?>" title="<?php echo $this->escape($awd['title']); ?>">
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</td>
+		<td>
+			<section id="price">
+				<h5><?php echo $this->escape($this->item['price']); ?> руб.</h5>
+				<a href="<?php echo $this->url(array('id' => $this->escape($this->item['item_id'])), 'shop-form', true); ?>">Купить</a>
+					<img src="/images/basket.png" />
+			</section>
+		</td>
+	</tr>
+</table>

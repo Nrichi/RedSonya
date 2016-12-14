@@ -1,0 +1,41 @@
+<h1>Блог</h1>
+<?php if($this->messages):?><div id="user_msg" class="success"><?php echo implode($this->messages); ?></div><?php endif;?>
+    <section id="content_wrapper">
+	    <?php if (count($this->posts)): ?>
+				<table id="prod_tbl">
+		        	<thead>
+		            	<tr>
+		                	<td>Фото</td>
+		                	<td>Название статьи</td>
+		                    <td>Краткое описание</td>
+		                    <td>Добавлено</td>
+		                    <td class="actions_icons">Действия</td>
+		                </tr>
+		            </thead>
+		            <tbody>
+						<?php foreach ($this->posts as $post): ?>
+							<tr>
+			                    <td><img class="master" src="/blogfotos/<?php echo $this->escape($post['post_id']); ?>/<?php echo $this->escape($post['img']); ?>"></td>
+			                    <td><?php echo $this->escape($post['title']); ?></td>
+			                    <td class="left_txt"><?php echo nl2br(mb_strcut($this->escape($post['desc']), 0, 700)); ?>...</td>
+			                    <td><?php echo date('d.m.Y', $this->escape($post['created'])); ?></td>
+
+			                    <td>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($post['post_id'])), 'admin-blog-comments', true); ?>">
+			                    		<img src="/images/comments.png" title="Перейти к комментариям"></a>
+			                    	<a href="<?php echo $this->url(array('id' => $this->escape($post['post_id'])), 'admin-blog-display', true); ?>">
+			                    		<img src="/images/eye.png" title='Просмотр'></a>
+			                        <a href="<?php echo $this->url(array('id' => $this->escape($post['post_id'])), 'admin-blog-delete', true); ?>">
+			                        	<img src="/images/cancel(3).png" title="Удалить"></a>
+			                    </td>
+			                </tr>
+						<?php endforeach; ?>
+					</tbody>
+		        </table>
+	        	<aside class="pagination">Страницы <?php echo $this->pages; ?></aside>
+        	
+		<?php else: ?>
+			<p>Пока нет ни одного поста в блоге</p>
+		<?php endif; ?>
+		<a class="green btn" href="<?php echo $this->url(array(), 'admin-blog-create'); ?>">ДОБАВИТЬ ПОСТ В БЛОГ</a>
+	</section>

@@ -1,0 +1,49 @@
+<header>
+	<h2>КУПИТЬ</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'shop-items'); ?>">Готовые работы</a></li>
+				<li>Материалы и аксессуары</li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+<?php if (count($this->items)): ?>
+	<?php foreach ($this->items as $item): ?>
+            <article class="btmline">
+                <header>
+                    <a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'shop-materials-display', true); ?>">
+                    	<img class="imgframe shopitem" src="/foto/<?php echo $this->escape($item['img']); ?>"/></a>
+                    <a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'shop-materials-display', true); ?>">
+                    	<h3 class="itemtitle"><?php echo $this->escape($item['title']); ?></h3></a>
+                </header>
+                <p><?php echo mb_strcut($this->escape($item['description']), 0, 700); ?>... </p>
+                <aside class="iteminfo">
+                	<section id="materials">
+                    	<h4>МАТЕРИАЛЫ</h4>
+                        <ul>
+                        	<?php $materials = explode(',', $this->escape($item['materials'])); ?>
+							<?php foreach ($materials as $mtl): ?>
+								<li><?php echo $mtl;?></li>
+							<?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <section id="awards">
+                        <!-- <img src="/images/teddy-award.png" />
+                        <img src="/images/teddy-award.png" />
+                        <img src="/images/teddy-award.png" /> -->
+                	</section>
+                    <section id="price">
+                        <h5><?php echo $this->escape($item['price']); ?> руб.</h5>
+                        <a href="<?php echo $this->url(array('id' => $this->escape($item['item_id'])), 'shop-form', true); ?>">Купить</a>
+                        <img src="/images/basket.png" />
+                    </section> 
+                </aside>
+            </article>
+	<?php endforeach; ?>
+	<aside class="pagelist">Страницы <?php echo $this->pages; ?></aside>
+<?php else: ?>
+	<p>Изделий для продажи пока нет =)</p>
+<?php endif; ?>

@@ -1,0 +1,9 @@
+<h1>Удаление поста из Блога</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите удалить пост
+        		<span class="bold">"<?php echo $this->escape($this->post['title']); ?>"</span> из базы данных?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->post['post_id'])), 'admin-blog-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->post['post_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array(), 'admin-blog-index'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

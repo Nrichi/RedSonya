@@ -1,0 +1,11 @@
+<h1>Удаление заказа из базы данных</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите удалить заказ от пользователя 
+        		<span class="bold">"<?php echo $this->escape($this->order['familia']).' '.
+			                    			   				 $this->escape($this->order['name']).' '.
+			                    			   				 $this->escape($this->order['otchestvo']); ?>"</span> ?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->order['order_id'])), 'admin-orders-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->order['order_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array(), 'admin-orders-index'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

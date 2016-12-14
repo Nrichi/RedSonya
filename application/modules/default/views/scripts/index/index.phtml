@@ -1,0 +1,50 @@
+<?php //$this->headLink()->appendStylesheet('/css/additional.css'); ?>
+
+            <section id="homeslider">
+                <div id="example">
+                    <div id="slides">
+                        <div class="slides_container">
+                        	<?php if (count($this->images)): ?>
+	                        	<?php foreach ($this->images as $current): ?>
+	                        		<a href="#"><img src="/foto/<?php echo $this->escape($current['img']); ?>" /></a>
+	                        	<?php endforeach; ?>
+	                        <?php else: ?>
+	                        <p>В слайдере нет изображений</p>
+	            			<?php endif; ?>
+                        </div>
+                    </div>
+                    <img src="/images/scratch.png" id="scratch" />
+                </div>
+                <!-- <img src="/images/ny-toys.png" style="position:relative; top:0px; left:-25px; margin-top:-285px; margin-right:-200px; margin-bottom:-50px; z-index:20;"> -->
+                <!-- <img src="/images/ny-toys1.png" style="position:relative; left:360px; margin-bottom:-70px;"> -->
+                
+                <script>
+					$(function(){
+						$('#slides').slides({
+							preload: true,
+							preloadImage: '/images/loading.gif',
+							play: 5000,
+							pause: 2500,
+							hoverPause: true
+						});
+					});
+				</script>
+        	</section>
+        	
+        	<section id="products_group">
+                <header>
+                    <h1 class="brown">МАСТЕРСКАЯ ОБЫКНОВЕННЫХ ЧУДЕС &laquo;РЫЖАЯ СОНЯ&raquo;</h1>
+                </header>
+                
+            	<?php if (count($this->categories)): ?>
+	                <?php foreach ($this->categories as $category): ?>
+						<article>
+	                        	<h3><?php echo $this->escape($category['title']); ?></h3>
+	                        	<img class="imgframe" src="/foto/<?php echo $this->escape($category['img']); ?>" />
+	                    		<p><?php echo nl2br($this->escape($category['description'])); ?></p>
+	                        </article>
+	                <?php endforeach; ?>
+	            <?php else: ?>
+	            <p>Пока нет ни одной категории товаров категории товаров</p>
+	            <?php endif; ?>
+            </section>

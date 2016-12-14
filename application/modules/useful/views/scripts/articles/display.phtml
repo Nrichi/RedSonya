@@ -1,0 +1,47 @@
+<header>
+	<h2>ХОТИТЕ НАУЧИТЬСЯ?<span class="top_header"> &mdash; Интересные статьи</span></h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'articles'); ?>">Это интересно</a></li>
+				<li><a href="<?php echo $this->url(array(), 'masterclass'); ?>">Виртуальные мастер-классы</a></li>
+                <li><a href="<?php echo $this->url(array(), 'schedule'); ?>">Расписание мастер-классов</a></li>
+                <li><a href="<?php echo $this->url(array(), 'links'); ?>">Полезные ссылки</a></li>
+			</ul>
+		</nav>
+	</section>
+</header>
+            
+<section class="post_view">
+	<article>
+		<header><h2><?php echo $this->escape($this->article['title']); ?></h2></header>
+		<?php foreach ($this->blocks as $block): ?>
+			<img class="imgframe" src="/allarticles/<?php echo $this->escape($block['article_id']); ?>/<?php echo $this->escape($block['img']); ?>">
+			<p><?php echo nl2br($this->escape($block['description'])); ?></p>
+		<?php endforeach; ?>
+		<aside class="postdate"><?php echo date('d.m.Y', $this->escape($this->article['created'])); ?></aside>
+	</article>
+</section>
+
+<h3>Добавить комментарий</h3>
+<section id="comment_form">
+	<?php echo $this->form; ?>
+</section>
+
+
+
+<h3>Комментарии :</h3>
+<?php if (count($this->comments)): ?>
+	<section id="comments">
+		<?php foreach ($this->comments as $comment): ?>
+			<article class="btmline">
+				<header><h3><?php echo $this->escape($comment['name']); ?></h3><?php echo date('d.m.Y', $this->escape($comment['created'])); ?></header>
+				<p><?php echo  nl2br($this->escape($comment['comment'])); ?></p>
+			</article>
+		<?php endforeach; ?>
+	</section>
+<?php else: ?>
+	<section id="comments">
+		<p>Комментариев пока нет</p>
+	</section>
+<?php endif; ?>

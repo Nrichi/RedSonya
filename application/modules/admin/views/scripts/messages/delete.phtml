@@ -1,0 +1,9 @@
+<h1>Удаление сообщения контактной формы</h1>
+    <section id="content_wrapper">
+        <p>Вы уверены, что хотите удалить сообщение от пользователя 
+        		<span class="bold">"<?php echo $this->escape($this->msg['name']); ?>"</span> ?</p>
+        <form action="<?php echo $this->url(array('id' => $this->escape($this->msg['message_id'])), 'admin-messages-delete'); ?>" method="post">
+        	<button class="green" type="submit" name="id" value="<?php echo $this->escape($this->msg['message_id']); ?>">УДАЛИТЬ</button>
+        	<a class="gray btn" href="<?php echo $this->url(array(), 'admin-messages-index'); ?>">ОТМЕНА</a>
+        </form>
+    </section>

@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Мастерская &laquo;РЫЖАЯ СОНЯ&raquo;</title>
+<!--[if IE]>
+	<script>
+		document.createElement('header');
+		document.createElement('nav');
+		document.createElement('section');
+		document.createElement('article');
+		document.createElement('aside');
+		document.createElement('footer');
+	</script>
+	<![endif]-->
+    
+<script src="/js/jquery-1.4.4.min.js"></script>
+<script src="/js/slides.min.jquery.js"></script>
+<script src="/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="/js/questions.js" type="text/javascript"></script>
+<script src="/js/jquery.exposure.min.js?v=0.6" type="text/javascript"></script>
+<script src="/js/slider.js" type="text/javascript"></script>
+<script>
+	jsHover = function() {
+	var hEls = document.getElementById("menu").getElementsByTagName("li");
+	for (var i=0, len=hEls.length; i<len; i++) {
+	hEls[i].onmouseover=function() { this.className+=" jshover"; }
+	hEls[i].onmouseout=function() { this.className=this.className.replace(" jshover", ""); }
+	}
+	}
+	if (window.attachEvent && navigator.userAgent.indexOf("Opera")==-1) window.attachEvent("onload", jsHover);
+</script>
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<?php echo $this->headLink(); ?>    
+</head>
+
+<body>
+    <header id="page_header">
+    	<nav>
+            <section>
+                <ul id="menu">
+                    <li><a href="<?php echo $this->url(array(), 'default'); ?>">ГЛАВНАЯ</a></li>
+                    <li><a href="<?php echo $this->url(array(), 'about'); ?>">ПОЗНАКОМИМСЯ?</a></li>
+                    <li><a href="#">ОБО ВСЕМ</a>
+                    	<ul>
+                        	<li><a href="<?php echo $this->url(array(), 'blog'); ?>">Блог</a></li>
+                            <li><a href="<?php echo $this->url(array(), 'questions'); ?>">Вопросы и ответы</a></li>
+                        </ul></li>
+                    <li><a href="#">КУПИТЬ</a>
+                    	<ul>
+                        	<li><a href="<?php echo $this->url(array(), 'shop-items'); ?>">Готовые работы</a></li>
+                            <li><a href="<?php echo $this->url(array(), 'shop-materials'); ?>">Материалы и аксессуары</a></li>
+                        </ul></li>
+                </ul>
+            </section>
+            <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index'), 'default', true); ?>" alt="На главную"><img src="/images/logo.png" id="logo" /></a>
+            <section>
+                <ul>
+                    <li><a href="#">ГАЛЕРЕЯ РАБОТ</a>
+                    	<ul>
+                        	<li><a href="<?php echo $this->url(array('category' => 'teddy'), 'gallery'); ?>">Мишки Тедди и их друзья</a></li>
+                            <li><a href="<?php echo $this->url(array('category' => 'wool'), 'gallery'); ?>">Игрушки из шерсти</a></li>
+                            <li><a href="<?php echo $this->url(array('category' => 'decor'), 'gallery'); ?>">Предметы интерьера</a></li>
+                            <li><a href="<?php echo $this->url(array('category' => 'other'), 'gallery'); ?>">Приятные мелочи</a></li>
+                        </ul></li>
+                    <li><a href="#">ХОТИТЕ НАУЧИТЬСЯ?</a>
+                    	<ul>
+                        	<li><a href="<?php echo $this->url(array(), 'articles'); ?>">Это интересно</a></li>
+                        	<li><a href="<?php echo $this->url(array(), 'masterclass'); ?>">Виртуальные мастер-классы</a></li>
+                            <li><a href="<?php echo $this->url(array(), 'schedule'); ?>">Расписание мастер-классов</a></li>
+                            <li><a href="<?php echo $this->url(array(), 'links'); ?>">Полезные ссылки</a></li>
+                        </ul></li>
+                    <li><a href="<?php echo $this->url(array(), 'contact'); ?>">КОНТАКТЫ</a></li>
+                </ul>
+            </section>
+            <img src="/images/shadow_menu.png" id="shadow"  />
+        </nav>
+    </header>
+    
+    <section id="wrapper">
+    	<section id="content">
+    	
+    	<?php echo $this->layout()->content; ?>
+    	
+		</section>
+    </section>
+    
+    
+    <footer id="page_footer">
+    	<section>
+        	<img src="/images/guarantee.png" id="garantee" />
+            <table>
+                <tr><td>Тел.:</td><td>+7 (918) 552-63-37</td></tr>
+                <tr><td>Почта:</td><td>info@magic-sonya.ru</td></tr>
+                <tr><td colspan="2">&copy; Мастерская &laquo;Рыжая Соня&raquo;</td></tr>
+            </table>
+
+
+<!-- begin of Top100 code -->
+
+<script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?2927658"></script>
+<noscript>
+<a href="http://top100.rambler.ru/navi/2927658/">
+<img src="http://counter.rambler.ru/top100.cnt?2927658" alt="Rambler's Top100" border="0" />
+</a>
+
+</noscript>
+<!-- end of Top100 code -->
+
+
+
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t12.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров за 24"+
+" часа, посетителей за 24 часа и за сегодня' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+
+
+            
+            <table id="promo">
+            	<tr>
+                    <td>Разработка дизайна<br />и создание сайта</td>
+                    <td><a href="http://aj-creative.ru/"><img src="/images/promo.png" /></a></td>
+                </tr>
+            </table>
+        </section>
+        
+    </footer>
+</body>
+</html>

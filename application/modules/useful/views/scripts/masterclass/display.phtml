@@ -1,0 +1,24 @@
+<header>
+	<h2>ХОТИТЕ НАУЧИТЬСЯ?<span class="top_header"> &mdash; Виртуальные мастер-классы</span></h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'articles'); ?>">Это интересно</a></li>
+				<li><a href="<?php echo $this->url(array(), 'masterclass'); ?>">Виртуальные мастер-классы</a></li>
+                <li><a href="<?php echo $this->url(array(), 'schedule'); ?>">Расписание мастер-классов</a></li>
+                <li><a href="<?php echo $this->url(array(), 'links'); ?>">Полезные ссылки</a></li>
+			</ul>
+		</nav>
+	</section>
+</header>
+            
+<section class="post_view">
+	<article>
+		<header><h2><?php echo $this->escape($this->mclass['title']); ?></h2></header>
+		<?php foreach ($this->blocks as $block): ?>
+			<img class="imgframe" src="/mclasses/<?php echo $this->escape($block['mc_id']); ?>/<?php echo $this->escape($block['img']); ?>">
+			<p><?php echo nl2br($this->escape($block['description'])); ?></p>
+		<?php endforeach; ?>
+		<aside class="postdate"><?php echo date('d.m.Y', $this->escape($this->mclass['created'])); ?></aside>
+	</article>
+</section>

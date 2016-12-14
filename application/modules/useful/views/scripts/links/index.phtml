@@ -1,0 +1,29 @@
+<header>
+	<h2>ХОТИТЕ НАУЧИТЬСЯ?</h2>
+	<section class="brown">
+		<nav>
+			<ul>
+				<li><a href="<?php echo $this->url(array(), 'articles'); ?>">Это интересно</a></li>
+				<li><a href="<?php echo $this->url(array(), 'masterclass'); ?>">Виртуальные мастер-классы</a></li>
+                <li><a href="<?php echo $this->url(array(), 'schedule'); ?>">Расписание мастер-классов</a></li>
+                <li>Полезные ссылки</li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+<?php if (count($this->links)): ?>	
+	<article class="links">
+		<ul>
+			<?php foreach ($this->links as $link): ?>		
+				<li><a href="<?php echo $this->escape($link['link']); ?>">
+					<?php echo $this->escape($link['link']); ?> &mdash; <?php echo $this->escape($link['title']); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</article>
+
+<?php else: ?>
+	<p>В разделе пока нет ни одной ссылки</p>
+<?php endif; ?>

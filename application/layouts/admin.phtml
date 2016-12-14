@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Панель администратора &laquo;РЫЖАЯ СОНЯ&raquo;</title>
+<!--[if IE]>
+	<script>
+		document.createElement('header');
+		document.createElement('nav');
+		document.createElement('section');
+		document.createElement('article');
+		document.createElement('aside');
+		document.createElement('footer');
+	</script>
+	<![endif]-->
+<link rel="stylesheet" href="/css/admin.css" type="text/css">
+<script src="/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+<!--  styled file upload script --> 
+<script src="/js/jquery.filestyle.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+	$("input.file_1").filestyle({ 
+	image: "/images/upload.gif",
+	imageheight : 26,
+	imagewidth : 78,
+	width : 217
+	});
+});</script>
+<script src="/js/form.js"></script>
+</head>
+
+<body>
+
+<header id="page_header">
+	<img class="logo" src="/images/logo-small.png">
+    <nav>
+		<ul>
+			<li><a href="<?php echo $this->url(array(), 'admin-mainpage-index'); ?>">Главная</a></li>
+			<li><a href="#">Мастерская</a>
+            	<ul>
+                	<li class="nav"><a href="<?php echo $this->url(array(), 'admin-masters-index'); ?>">Сотрудники</a></li>
+                    <li class="nav"><a href="<?php echo $this->url(array(), 'admin-events-index'); ?>">Блоки с описанием</a></li>
+                </ul></li>
+			<li><a href="<?php echo $this->url(array(), 'admin-blog-index'); ?>">Блог</a></li>
+			<li><a href="#">Товары</a>
+			<ul>
+                	<li class="nav"><a href="<?php echo $this->url(array(), 'admin-items-index'); ?>">Каталог товаров</a></li>
+                    <li class="nav"><a href="<?php echo $this->url(array(), 'admin-awards-index'); ?>">Награды</a></li>
+                </ul></li>
+			<li><a href="<?php echo $this->url(array(), 'admin-articles-index'); ?>">Статьи</a></li>
+			<li><a href="<?php echo $this->url(array(), 'admin-schedule-index'); ?>">Расписание МК</a></li>
+			<li><a href="<?php echo $this->url(array(), 'admin-mclasses-index'); ?>">Виртуальные МК</a></li>
+        	<li><a href="<?php echo $this->url(array(), 'admin-links-index'); ?>">Ссылки</a></li>
+        	<li><a href="<?php echo $this->url(array(), 'admin-messages-index'); ?>">Сообщения</a></li>
+        	<li><a href="<?php echo $this->url(array(), 'admin-orders-index'); ?>">Заказы</a></li>
+        	<li><a href="#"><img src="/images/sett.png"></a>
+            	<ul>
+                	<li class="nav"><a href="<?php echo $this->url(array(), 'changepass'); ?>">Сменить пароль</a></li>
+                    <li class="nav"><a href="<?php echo $this->url(array(), 'logout'); ?>">Выход</a></li>
+                </ul></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="content">
+    <?php echo $this->layout()->content; ?>
+</section>
+
+<footer id="page_footer">
+	&copy; &laquo;Рыжая Соня&raquo; 2013 г.
+</footer>
+
+</body>
+</html>
